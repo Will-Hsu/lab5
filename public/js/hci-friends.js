@@ -3,6 +3,7 @@
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
 	initializePage();
+	$("a.name h3").click(nameClick);
 })
 
 /*
@@ -10,6 +11,16 @@ $(document).ready(function() {
  */
 function initializePage() {
 	console.log("Javascript connected!");
+}
+
+function nameClick(e) {
+    // prevent the page from reloading     
+    e.preventDefault();
+    // In an event handler, $(this) refers to     
+	// the object that triggered the event 
+	var anagramN = anagrammedName($(this).text());
+	$(this).text(anagramN);
+    // $(this).css("background-color", "#7fff00");
 }
 
 function anagrammedName(name) {
